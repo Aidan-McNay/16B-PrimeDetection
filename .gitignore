@@ -3,7 +3,8 @@
 .vscode
 *.vcd
 runs
-src/sim_build
-src/__pycache__/
-src/results.xml
+src/tests/sim_build
+src/tests/build
+src/tests/__pycache__/
+src/tests/results.xml
 src/user_config.tcl
