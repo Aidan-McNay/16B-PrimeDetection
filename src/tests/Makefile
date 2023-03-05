@@ -5,8 +5,6 @@ DESIGNS := itr_div counter
 
 all: clean_build $(DESIGNS)
 
-actions: clean_build $(TESTS)
-
 clean_build:
 	@rm -rf build
 	@mkdir build

@@ -40,7 +40,7 @@ async def itr_div_test(dut):
     await count_test( dut, 2, 2, 4 )
 
     # Large tests
-    await count_test( dut,  4,  7, 10 )
+    await count_test( dut,  4,  7, 11 )
     await count_test( dut, 13,  5, 18 )
     await count_test( dut, 20, 27, 47 )
     await count_test( dut, 42,  3, 45 )
