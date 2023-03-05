@@ -24,6 +24,6 @@ jobs:
       run: |
         cd src/tests
         IS_ACTIONS=1
-        make
+        make actions
         # make will return success even if the test fails, so check for failure in the results.xml
-        ! grep failure build/results*
+        ! grep failed build/*output.txt
