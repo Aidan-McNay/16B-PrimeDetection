@@ -11,6 +11,7 @@ clean_build:
 $(TESTS): 
 	@echo "Running $@..."
 	@$(MAKE) -sf Makefile.$@.mk &> build/$@_output.txt
+	@wait
 	@mv sim_build build/sim_build_$@
 	@mv results.xml build/results_$@.xml
 	@mv $@_tb.vcd build
