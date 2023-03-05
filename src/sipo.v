@@ -1,8 +1,6 @@
 `ifndef SRC_SIPO
 `define SRC_SIPO
 
-`include "reg.v"
-
 module aidan_mcnay_sipo #(
     parameter nbits = 16
 ) (
