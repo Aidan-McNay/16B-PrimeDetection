@@ -2,8 +2,13 @@
 
 TESTS := itr_div_test counter_test
 DESIGNS := itr_div counter
+IS_ACTIONS ?= 0
 
+ifeq ( $(IS_ACTIONS), 1)
+all: clean_build $(TESTS)
+else
 all: clean_build $(DESIGNS)
+endif
 
 clean_build:
 	@rm -rf build
