@@ -5,14 +5,15 @@
 SIM = icarus
 TOPLEVEL_LANG = verilog
 
-VERILOG_SOURCES = $(PWD)/itr_div_test_tb.v 
-VERILOG_SOURCES += $(PWD)/../itr_div.v
+VERILOG_SOURCES = $(PWD)/tests/sipo/sipo_test_tb.v 
+VERILOG_SOURCES += $(PWD)/sipo.v
 
 # TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
-TOPLEVEL = itr_div_test_tb
+TOPLEVEL = sipo_test_tb
 
 # MODULE is the basename of the Python test file
-MODULE = itr_div_test
+MODULE = sipo_test
+export PYTHONPATH := tests/sipo:$(PYTHONPATH)
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim

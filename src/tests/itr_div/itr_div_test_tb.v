@@ -4,7 +4,7 @@
 `ifndef SRC_TESTS_ITR_DIV_TEST_TB
 `define SRC_TESTS_ITR_DIV_TEST_TB
 
-`include "../itr_div.v"
+`include "itr_div.v"
 
 module itr_div_test_tb 
 (

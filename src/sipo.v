@@ -1,11 +1,7 @@
 `ifndef SRC_SIPO
 `define SRC_SIPO
 
-`ifdef SIM
-`include "../reg.v" // Relative to simulator path
-`else
 `include "reg.v"
-`endif
 
 module aidan_mcnay_sipo #(
     parameter nbits = 16

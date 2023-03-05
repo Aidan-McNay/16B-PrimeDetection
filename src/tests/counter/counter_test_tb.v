@@ -4,7 +4,7 @@
 `ifndef SRC_TESTS_COUNTER_TEST_TB
 `define SRC_TESTS_COUNTER_TEST_TB
 
-`include "../counter.v"
+`include "counter.v"
 
 module counter_test_tb #( 
     parameter nbits = 16

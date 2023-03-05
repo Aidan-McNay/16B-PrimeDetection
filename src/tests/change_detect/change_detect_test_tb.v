@@ -4,7 +4,7 @@
 `ifndef SRC_TESTS_CHANGE_DETECT_TEST_TB
 `define SRC_TESTS_CHANGE_DETECT_TEST_TB
 
-`include "../change_detect.v"
+`include "change_detect.v"
 
 module change_detect_test_tb (
     input  wire clk,

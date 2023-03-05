@@ -3,9 +3,8 @@
 
 `ifndef SRC_TESTS_SIPO_TEST_TB
 `define SRC_TESTS_SIPO_TEST_TB
-`define SIM
 
-`include "../sipo.v"
+`include "sipo.v"
 
 module sipo_test_tb #( 
     parameter nbits = 16
