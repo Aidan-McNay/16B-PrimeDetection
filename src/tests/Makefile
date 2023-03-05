@@ -1,7 +1,8 @@
 # Makefile to run tests for the PrimeDetector design
 
-TESTS := itr_div_test counter_test
-DESIGNS := itr_div counter
+TESTS := itr_div_test counter_test sipo_test change_detect_test
+DESIGNS := itr_div counter sipo change_detect
+RTL_LIBRARY = $(PWD)/..
 
 all: clean_build $(DESIGNS)
 

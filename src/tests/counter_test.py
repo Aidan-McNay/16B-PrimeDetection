@@ -25,7 +25,7 @@ async def count_test( dut, input, num_to_count, output ):
     assert output == dut.out_num.value
 
 @cocotb.test()
-async def itr_div_test(dut):
+async def counter_test(dut):
     dut._log.info("start")
 
     # Apply a clock
