@@ -7,8 +7,7 @@ module aidan_mcnay_change_detect (
     output wire out_signal
 );
 
-    // Detect when the input changes - outputs a 1 on a change,
-    // 0 if constant
+    // Detect when the input changes from a 0 to a 1
 
     reg in_sig_1;
     reg in_sig_2;
@@ -18,7 +17,7 @@ module aidan_mcnay_change_detect (
         in_sig_2 <= in_sig_1;
     end
 
-    assign out_signal = ( in_sig_1 ^ in_sig_2 );
+    assign out_signal = ( in_sig_1 & !in_sig_2 );
 
 endmodule
 

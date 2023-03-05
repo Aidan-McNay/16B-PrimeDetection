@@ -26,7 +26,7 @@ async def change_detect_test(dut):
 
     await sequence_test( dut, 0, 0, 0 )
     await sequence_test( dut, 0, 1, 1 )
-    await sequence_test( dut, 1, 0, 1 )
+    await sequence_test( dut, 1, 0, 0 )
     await sequence_test( dut, 0, 0, 0 )
 
 
