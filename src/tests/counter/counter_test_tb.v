@@ -7,7 +7,7 @@
 `include "counter.v"
 
 module counter_test_tb #( 
-    parameter nbits = 16
+    parameter nbits = 32
 ) (
     input  wire             clk,
     input  wire [nbits-1:0] in_num,
@@ -22,7 +22,7 @@ module counter_test_tb #(
         #1;
     end
 
-    aidan_mcnay_counter #( nbits ) dut (
+    aidan_mcnay_counter #( .nbits(nbits) ) dut (
         .*
     );
 

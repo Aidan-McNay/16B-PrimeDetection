@@ -8,7 +8,7 @@ def gen_list( value ):
     # Generates a 16-bit long list of the value as binary numbers
     # MSB is first in the list
     return_list = []
-    for i in range( 16, 0, -1 ):
+    for i in range( 32, 0, -1 ):
         test_value = 2 ** ( i - 1 )
 
         if( value >= test_value ):

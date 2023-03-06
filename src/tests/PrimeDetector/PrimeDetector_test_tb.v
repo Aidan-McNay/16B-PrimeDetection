@@ -7,7 +7,7 @@
 `include "PrimeDetector.v"
 
 module PrimeDetector_test_tb #( 
-    parameter nbits = 16
+    parameter nbits = 32
 ) (
     input  wire io_in_0,
     input  wire io_in_1,
@@ -55,7 +55,7 @@ module PrimeDetector_test_tb #(
     assign io_out_6 = io_out[6];
     assign io_out_7 = io_out[7];
 
-    aidan_mcnay_PrimeDetector #( nbits ) dut (
+    aidan_mcnay_PrimeDetector #( .nbits(nbits) ) dut (
         .*
     );
 

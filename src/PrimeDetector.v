@@ -2,7 +2,7 @@
 `define SRC_PRIMEDETECTOR
 
 module aidan_mcnay_PrimeDetector #(
-    parameter nbits = 16
+    parameter nbits = 32
 )(
     input  wire [7:0] io_in,
     output wire [7:0] io_out

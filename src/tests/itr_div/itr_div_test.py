@@ -69,5 +69,9 @@ async def itr_div_test(dut):
     await run_test_delays( dut, 42, 17, 8 )
     await run_test_delays( dut, 33,  5, 3 )
 
+    # Test when opb is bigger than opa
+    await run_test_delays( dut,  1,  2,  1 )
+    await run_test_delays( dut, 14, 27, 14 )
+
 
 

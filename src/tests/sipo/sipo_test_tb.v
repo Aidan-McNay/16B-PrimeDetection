@@ -7,7 +7,7 @@
 `include "sipo.v"
 
 module sipo_test_tb #( 
-    parameter nbits = 16
+    parameter nbits = 32
 ) (
     input  wire             clk,
     input  wire             reset,
@@ -23,7 +23,7 @@ module sipo_test_tb #(
         #1;
     end
 
-    aidan_mcnay_sipo #( nbits ) dut (
+    aidan_mcnay_sipo #( .nbits(nbits) ) dut (
         .*
     );
 

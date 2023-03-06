@@ -6,17 +6,18 @@
 
 `include "itr_div.v"
 
-module itr_div_test_tb 
-(
+module itr_div_test_tb #( 
+    parameter nbits = 32
+) (
     input  wire               clk,
     input  wire               reset,
     
-    input  wire [16 - 1:0] opa,
-    input  wire [16 - 1:0] opb,
+    input  wire [nbits - 1:0] opa,
+    input  wire [nbits - 1:0] opb,
     input  wire               istream_val,
     output wire               istream_rdy,
 
-    output wire [16 - 1:0] result,
+    output wire [nbits - 1:0] result,
     output wire               ostream_val,
     input  wire               ostream_rdy
 );
@@ -27,7 +28,7 @@ module itr_div_test_tb
         #1;
     end
 
-    aidan_mcnay_itr_div #( 16 ) dut (
+    aidan_mcnay_itr_div #( .nbits(nbits) ) dut (
         .*
     );
 

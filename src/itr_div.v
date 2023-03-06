@@ -49,8 +49,12 @@ module aidan_mcnay_itr_div #(
             state_next = IDLE;
 
         else if( state_curr == IDLE ) begin
-            if( istream_val )
-                state_next = CALC;
+            if( istream_val ) begin
+                if( opb > opa ) // Early exit
+                    state_next = DONE;
+                else
+                    state_next = CALC;
+            end
         end
 
         else if( state_curr == CALC ) begin

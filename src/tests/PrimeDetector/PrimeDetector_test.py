@@ -8,7 +8,7 @@ def gen_list( value ):
     # Generates a 16-bit long list of the value as binary numbers
     # MSB is first in the list
     return_list = []
-    for i in range( 16, 0, -1 ):
+    for i in range( 32, 0, -1 ):
         test_value = 2 ** ( i - 1 )
 
         if( value >= test_value ):
@@ -40,9 +40,7 @@ async def PrimeDetector_value_test( dut, number, is_prime ):
     dut.io_in_5.value = 0 # Ready bit
 
     # Wait for the design to be done
-    i = 0
     while True:
-        i = i + 1
         await RisingEdge( dut.io_in_0 )
         if( dut.io_out_0 == 1 ):
             break
@@ -91,3 +89,12 @@ async def PrimeDetector_test(dut):
     await PrimeDetector_value_test( dut,  69, False )
     await PrimeDetector_value_test( dut, 877, True  )
     await PrimeDetector_value_test( dut, 943, False )
+
+    # Base cases
+    await PrimeDetector_value_test( dut, 2, True  )
+    await PrimeDetector_value_test( dut, 1, False )
+    await PrimeDetector_value_test( dut, 0, False )
+
+    # Test larger range
+    await PrimeDetector_value_test( dut, 65537, True  )
+ 
