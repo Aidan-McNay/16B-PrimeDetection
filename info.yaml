@@ -24,9 +24,9 @@ yaml_version: 3.0
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
   author:       "Aidan McNay"      # Your name
-  title:        "16B-PrimeDetector"      # Project title
+  title:        "32b-PrimeDetector"      # Project title
   language:     "Verilog"      # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "Detects whether a 16-bit number is prime or not"      # Short description of what your project does
+  description:  "Detects whether a 32-bit number is prime or not"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
