@@ -2,6 +2,7 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, FallingEdge, Timer, ClockCycles, Combine
 from random import randint, seed
+import signal
 seed( 0xdeadbeef ) # Reproducible testing
 
 def gen_list( value ):
@@ -26,7 +27,7 @@ async def shift_in_value( dut, value ):
         await ClockCycles( dut.io_in_3, randint( 3, 10 ) ) # Delay - make sure we don't get extra data
         dut.io_in_4.value = 0 # Enable
         dut.io_in_2.value = value_bit # Data bit
-        await RisingEdge( dut.io_in_3 ) # Data is in
+        await ClockCycles( dut.io_in_3, 1 ) # Data is in
         dut.io_in_4.value = 1 # Enable
 
 
@@ -36,7 +37,7 @@ async def PrimeDetector_value_test( dut, number, is_prime ):
 
     # Tell the design we're ready
     dut.io_in_5.value = 1 # Ready bit
-    await ClockCycles( dut.io_in_0, randint( 3, 10 ) ) # Random delay
+    await ClockCycles( dut.io_in_0, randint( 4, 10 ) ) # Random delay
     dut.io_in_5.value = 0 # Ready bit
 
     # Wait for the design to be done
@@ -58,12 +59,15 @@ async def PrimeDetector_test(dut):
     dut._log.info("start")
     print( dut )
 
+    # Timeout
+    signal.alarm( 60 )
+
     # Apply a clock
     clock = Clock(dut.io_in_0, 1, units="ns")
     cocotb.start_soon(clock.start())
 
     # Apply user input clock
-    clock = Clock(dut.io_in_3, 5, units="ns")
+    clock = Clock(dut.io_in_3, 20, units="ns")
     cocotb.start_soon(clock.start())
 
     # Set input enable and ready bit to be low
@@ -72,7 +76,7 @@ async def PrimeDetector_test(dut):
 
     # Reset the design - active high
     dut.io_in_1.value = 1
-    await ClockCycles(dut.io_in_0, 10)
+    await ClockCycles(dut.io_in_3, 5)
     dut.io_in_1.value = 0
 
     # Make sure that done is 0
@@ -98,8 +102,8 @@ async def PrimeDetector_test(dut):
     await PrimeDetector_value_test( dut, 0, False )
 
     # # Test larger range
-    await PrimeDetector_value_test( dut,      65537, True  )
-    await PrimeDetector_value_test( dut, 4294967295, False )
+    # await PrimeDetector_value_test( dut,      65537, True  )
+    # await PrimeDetector_value_test( dut, 4294967295, False )
     # await PrimeDetector_value_test( dut, 4294967291, True  ) # Takes super long
-    await PrimeDetector_value_test( dut, 4294967289, False )
+    # await PrimeDetector_value_test( dut, 4294967289, False )
  

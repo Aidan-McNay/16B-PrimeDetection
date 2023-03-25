@@ -13,25 +13,50 @@ module aidan_mcnay_PrimeDetector #(
 
     // Unpack input signals
     wire clk;
-    wire reset;
+    wire reset_bouncy;
     
     wire SDI;
-    wire SCLK;
+    wire SCLK_bouncy;
     wire CS; // Active low
-    wire ready;
+    wire ready_bouncy;
 
     wire done;
     wire is_prime;
 
-    assign clk   = io_in[0];
-    assign reset = io_in[1];
-    assign SDI   = io_in[2];
-    assign SCLK  = io_in[3];
-    assign CS    = io_in[4];
-    assign ready = io_in[5];
+    assign clk          = io_in[0];
+    assign reset_bouncy = io_in[1];
+    assign SDI          = io_in[2];
+    assign SCLK_bouncy  = io_in[3];
+    assign CS           = io_in[4];
+    assign ready_bouncy = io_in[5];
 
     assign io_out[0] = done;
     assign io_out[1] = is_prime;
+
+    // Synchronize signals that need it
+
+    reg reset1;
+    reg reset;
+    reg ready1;
+    reg ready;
+
+    always @( posedge clk ) begin
+        reset1 <= reset_bouncy;
+        reset  <= reset1;
+
+        ready  <= ready_bouncy; // Only need one reg - change detector on other side
+    end
+
+    // Debounce user clock
+
+    wire SCLK;
+
+    aidan_mcnay_debouncer debouncer (
+        .clk   ( clk ),
+        .reset ( reset ),
+        .in    ( SCLK_bouncy ),
+        .out   ( SCLK )
+    );
 
     //--------------------Datapath--------------------
 

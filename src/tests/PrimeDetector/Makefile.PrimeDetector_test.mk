@@ -13,6 +13,7 @@ VERILOG_SOURCES += $(PWD)/change_detect.v
 VERILOG_SOURCES += $(PWD)/counter.v
 VERILOG_SOURCES += $(PWD)/itr_div.v
 VERILOG_SOURCES += $(PWD)/fsm_control.v
+VERILOG_SOURCES += $(PWD)/debouncer.v
 
 # TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
 TOPLEVEL = PrimeDetector_test_tb
