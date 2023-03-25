@@ -6,7 +6,7 @@
 
 ## Block Diagram
 
-![](assets/diagram.png)
+![](assets/diagram_31b.png)
 
 The user input is shifted in through an SPI-like interface into a 31-bit shift-in, parallel-out register (SIPO). From here, the FSM control logic waits for a rising edge on the `ready` signal. It then proceeds to try and divide the value in the SIPO by all possibly values below it (up to `31'h00010000`, as the maximum possible value). If it finds a value that divides evenly, then it will stop and declare the number not prime (`done` is high, and `is_prime` is low). If it doesn't divide evenly by any of the numbers, it will declare the number prime (`done` and `is_prime` are high).
 
