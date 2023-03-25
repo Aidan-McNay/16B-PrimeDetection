@@ -7,7 +7,7 @@
 `include "PrimeDetector.v"
 
 module PrimeDetector_test_tb #( 
-    parameter nbits = 32
+    parameter nbits = 31
 ) (
     input  wire io_in_0,
     input  wire io_in_1,

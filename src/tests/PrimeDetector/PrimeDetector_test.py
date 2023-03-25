@@ -9,7 +9,7 @@ def gen_list( value ):
     # Generates a 16-bit long list of the value as binary numbers
     # MSB is first in the list
     return_list = []
-    for i in range( 32, 0, -1 ):
+    for i in range( 31, 0, -1 ):
         test_value = 2 ** ( i - 1 )
 
         if( value >= test_value ):
@@ -103,7 +103,7 @@ async def PrimeDetector_test(dut):
 
     # # Test larger range
     await PrimeDetector_value_test( dut,      65537, True  )
-    await PrimeDetector_value_test( dut, 4294967295, False )
+    await PrimeDetector_value_test( dut, 2147483646, False )
     # await PrimeDetector_value_test( dut, 4294967291, True  ) # Takes super long
-    await PrimeDetector_value_test( dut, 4294967289, False )
+    await PrimeDetector_value_test( dut, 2147483643, False )
  
