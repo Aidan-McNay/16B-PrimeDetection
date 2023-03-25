@@ -1,35 +1,32 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/tests/badge.svg)
 
-# What is Tiny Tapeout?
+# 31-Bit Prime Detector
 
-TinyTapeout is an educational project that aims to make it easier and cheaper than ever to get your digital designs manufactured on a real chip!
+31-Bit Prime Detector is a hardware prime number detector for [Tiny Tapeout 3](https://tinytapeout.com). It takes in a shifted-in 31-bit number, and will determine whether it is prime or not.
 
-Go to https://tinytapeout.com for instructions!
+## Block Diagram
 
-## How to change the Wokwi project
+![](assets/diagram.png)
 
-Edit the [info.yaml](info.yaml) and change the wokwi_id to match your project.
+The user input is shifted in through an SPI-like interface into a 31-bit shift-in, parallel-out register (SIPO). From here, the FSM control logic waits for a rising edge on the `ready` signal. It then proceeds to try and divide the value in the SIPO by all possibly values below it (up to `31'h00010000`, as the maximum possible value). If it finds a value that divides evenly, then it will stop and declare the number not prime (`done` is high, and `is_prime` is low). If it doesn't divide evenly by any of the numbers, it will declare the number prime (`done` and `is_prime` are high).
 
-## How to enable the GitHub actions to build the ASIC files
+Not shown in the picture is one additional output, `waiting`, which displays whether the Prime Number Detector is currently waiting for another number to run.
 
-Please see the instructions for:
+Lastly, both `reset` and `ready` are buffered by registers to synchronize the inputs, and `SCLK` is debounced internally through sampling with a depth of 4 (i.e. the internal signal will only change to a value if all 4 samples agree). 
 
-* [Enabling GitHub Actions](https://tinytapeout.com/faq/#when-i-commit-my-change-the-gds-action-isnt-running)
-* [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+## Testing
 
-## How does it work?
+### Dependencies
 
-When you edit the info.yaml to choose a different ID, the [GitHub Action](.github/workflows/gds.yaml) will fetch the digital netlist of your design from Wokwi.
+My testing infrastructure is based on Cocotb testing in Python with Pytest, automated with Makefiles. To run the tests, you will need Cocotb and Pytest installed, as well as either iverilog or verilator (with the tests being set up to use the former currently):
 
-After that, the action uses the open source ASIC tool called [OpenLane](https://www.zerotoasiccourse.com/terminology/openlane/) to build the files needed to fabricate an ASIC.
+```bash
+sudo apt install iverilog verilator
+pip3 install cocotb pytest
+```
 
-## Resources
+You will also need to have `make` installed, although that is default on most systems.
 
-* [FAQ](https://tinytapeout.com/faq/)
-* [Digital design lessons](https://tinytapeout.com/digital_design/)
-* [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-* [Join the community](https://discord.gg/rPK2nSjxy8)
+### Running the Tests
 
-## What next?
-
-* Share your GDS on Twitter, tag it [#tinytapeout](https://twitter.com/hashtag/tinytapeout?src=hashtag_click) and [link me](https://twitter.com/matthewvenn)!
+To run the tests, navigate to `src/tests` and run `make all`. You will get an intuitive display of whether the tests pass or fail, as well as all of the testing outputs and artifacts in `src/tests/build`
