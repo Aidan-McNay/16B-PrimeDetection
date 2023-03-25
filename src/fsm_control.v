@@ -46,7 +46,7 @@ module aidan_mcnay_fsm_control #(
     reg [2:0] state_curr;
     reg [2:0] state_next;
 
-    wire   waiting; // Waiting for new operation
+    // Waiting for new operation
     assign waiting = ( ( state_curr == IDLE ) | ( state_curr == SUCCESS ) | ( state_curr == FAILURE ) );
 
     always @( posedge clk ) begin
