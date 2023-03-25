@@ -16,8 +16,8 @@ module aidan_mcnay_debouncer (
     wire [3:0] switch_off_value;
     reg        out_reg;
 
-    assign switch_on_value  = 4'hff;
-    assign switch_off_value = 4'h00;
+    assign switch_on_value  = 4'hf;
+    assign switch_off_value = 4'h0;
     
     assign out = out_reg;
 

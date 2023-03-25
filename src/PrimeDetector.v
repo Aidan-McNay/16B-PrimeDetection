@@ -22,6 +22,7 @@ module aidan_mcnay_PrimeDetector #(
 
     wire done;
     wire is_prime;
+    wire waiting;
 
     assign clk          = io_in[0];
     assign reset_bouncy = io_in[1];
@@ -32,6 +33,15 @@ module aidan_mcnay_PrimeDetector #(
 
     assign io_out[0] = done;
     assign io_out[1] = is_prime;
+    assign io_out[2] = waiting;
+
+    // Drive other outputs to ground for now
+
+    assign io_out[3] = 1'b0;
+    assign io_out[4] = 1'b0;
+    assign io_out[5] = 1'b0;
+    assign io_out[6] = 1'b0;
+    assign io_out[7] = 1'b0;
 
     // Synchronize signals that need it
 
@@ -150,7 +160,8 @@ module aidan_mcnay_PrimeDetector #(
         .counter_latch   (counter_latch),
         .counter_en      (counter_en),
         .done            (done),
-        .is_prime        (is_prime)
+        .is_prime        (is_prime),
+        .waiting         (waiting)
     );
 
 endmodule

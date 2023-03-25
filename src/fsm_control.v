@@ -23,7 +23,8 @@ module aidan_mcnay_fsm_control #(
     output wire             counter_latch,
     output wire             counter_en,
     output wire             done,
-    output wire             is_prime
+    output wire             is_prime,
+    output wire             waiting
 );
 
     // FSM-based control logic for overall prime detector
