@@ -100,7 +100,7 @@ module aidan_mcnay_PrimeDetector #(
 
     wire [nbits-1:0] div_result;
 
-    aidan_mcnay_itr_div #( .nbits(nbits) ) itr_div (
+    aidan_mcnay_div #( .nbits(nbits) ) div (
         .clk         (clk),
         .reset       (reset),
 

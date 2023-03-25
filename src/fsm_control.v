@@ -60,11 +60,15 @@ module aidan_mcnay_fsm_control #(
         else if( waiting ) begin
             if( ready )
                 state_next = DIV_REQ;
+
+            else state_next = state_curr;
         end
 
         else if( state_curr == DIV_REQ ) begin
             if( div_istream_rdy ) // Transaction occurred
                 state_next = DIV_RESP;
+
+            else state_next = state_curr;
         end
 
         else if( state_curr == DIV_RESP ) begin

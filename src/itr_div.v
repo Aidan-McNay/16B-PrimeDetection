@@ -55,16 +55,22 @@ module aidan_mcnay_itr_div #(
                 else
                     state_next = CALC;
             end
+
+            else state_next = state_curr;
         end
 
         else if( state_curr == CALC ) begin
             if( subtracted_val < subtract_val_reg )
                 state_next = DONE;
+            
+            else state_next = state_curr;
         end
 
         else if( state_curr == DONE ) begin
             if( ostream_rdy )
                 state_next = IDLE;
+            
+            else state_next = state_curr;
         end
 
         else state_next = state_curr;

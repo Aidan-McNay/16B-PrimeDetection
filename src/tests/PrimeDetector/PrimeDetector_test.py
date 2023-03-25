@@ -102,8 +102,8 @@ async def PrimeDetector_test(dut):
     await PrimeDetector_value_test( dut, 0, False )
 
     # # Test larger range
-    # await PrimeDetector_value_test( dut,      65537, True  )
-    # await PrimeDetector_value_test( dut, 4294967295, False )
+    await PrimeDetector_value_test( dut,      65537, True  )
+    await PrimeDetector_value_test( dut, 4294967295, False )
     # await PrimeDetector_value_test( dut, 4294967291, True  ) # Takes super long
-    # await PrimeDetector_value_test( dut, 4294967289, False )
+    await PrimeDetector_value_test( dut, 4294967289, False )
  
