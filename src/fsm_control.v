@@ -78,6 +78,9 @@ module aidan_mcnay_fsm_control #(
                     state_next = SUCCESS;
                     // We avoid stopping one step earlier to avoid another subtraction unit
 
+                else if( counter_value == 32'h00010000 ) // Early exit
+                    state_next = SUCCESS;
+
                 else if( div_result == 0 ) // Divided cleanly
                     state_next = FAILURE;
 

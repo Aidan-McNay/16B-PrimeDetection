@@ -5,7 +5,7 @@
 runs
 src/tests/sim_build
 src/tests/build
-**/__pycache__/
+__pycache__/
 *.pyc
 src/tests/results.xml
 src/user_config.tcl

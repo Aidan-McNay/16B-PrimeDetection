@@ -40,7 +40,9 @@ async def PrimeDetector_value_test( dut, number, is_prime ):
     dut.io_in_5.value = 0 # Ready bit
 
     # Wait for the design to be done
+    i = 0
     while True:
+        i = i + 1
         await RisingEdge( dut.io_in_0 )
         if( dut.io_out_0 == 1 ):
             break
@@ -95,6 +97,9 @@ async def PrimeDetector_test(dut):
     await PrimeDetector_value_test( dut, 1, False )
     await PrimeDetector_value_test( dut, 0, False )
 
-    # Test larger range
-    await PrimeDetector_value_test( dut, 65537, True  )
+    # # Test larger range
+    await PrimeDetector_value_test( dut,      65537, True  )
+    await PrimeDetector_value_test( dut, 4294967295, False )
+    # await PrimeDetector_value_test( dut, 4294967291, True  ) # Takes super long
+    await PrimeDetector_value_test( dut, 4294967289, False )
  
