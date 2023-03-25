@@ -10,18 +10,18 @@ module aidan_mcnay_debouncer (
 );
 
     // Debounces an input signal by verifying it's the
-    // same across 8 cycles
+    // same across 4 cycles
 
-    wire [7:0] switch_on_value;
-    wire [7:0] switch_off_value;
+    wire [3:0] switch_on_value;
+    wire [3:0] switch_off_value;
     reg        out_reg;
 
-    assign switch_on_value  = 8'hff;
-    assign switch_off_value = 8'h00;
+    assign switch_on_value  = 4'hff;
+    assign switch_off_value = 4'h00;
     
     assign out = out_reg;
 
-    reg [7:0] input_history;
+    reg [3:0] input_history;
 
     always @( posedge clk ) begin
 
@@ -32,7 +32,7 @@ module aidan_mcnay_debouncer (
 
         else begin
             // Shift in input
-            input_history <= { input_history[6:0], in };
+            input_history <= { input_history[2:0], in };
 
             if     ( input_history == switch_on_value  ) out_reg <= 1'b1;
             else if( input_history == switch_off_value ) out_reg <= 1'b0;

@@ -39,12 +39,14 @@ module aidan_mcnay_PrimeDetector #(
     reg reset;
     reg ready1;
     reg ready;
+    reg SCLK_sync;
 
     always @( posedge clk ) begin
         reset1 <= reset_bouncy;
         reset  <= reset1;
 
-        ready  <= ready_bouncy; // Only need one reg - change detector on other side
+        ready     <= ready_bouncy; // Only need one reg - change detector on other side
+        SCLK_sync <= SCLK_bouncy;
     end
 
     // Debounce user clock
@@ -54,7 +56,7 @@ module aidan_mcnay_PrimeDetector #(
     aidan_mcnay_debouncer debouncer (
         .clk   ( clk ),
         .reset ( reset ),
-        .in    ( SCLK_bouncy ),
+        .in    ( SCLK_sync ),
         .out   ( SCLK )
     );
 
