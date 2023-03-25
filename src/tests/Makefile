@@ -1,6 +1,6 @@
 # Makefile to run tests for the PrimeDetector design
 
-TESTS := itr_div_test shift_div_test div_test counter_test sipo_test change_detect_test PrimeDetector_test
+TESTS := itr_div_test shift_div_test div_test combo_div_test counter_test sipo_test change_detect_test PrimeDetector_test
 
 all: clean_build $(TESTS)
 

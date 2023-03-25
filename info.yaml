@@ -9,9 +9,7 @@ project:
     - change_detect.v       
     - counter.v
     - fsm_control.v
-    - itr_div.v
-    - shift_div.v
-    - div.v
+    - combo_div.v
     - PrimeDetector.v
     - reg.v
     - sipo.v

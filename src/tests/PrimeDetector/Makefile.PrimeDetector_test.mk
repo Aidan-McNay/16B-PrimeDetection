@@ -11,9 +11,7 @@ VERILOG_SOURCES += $(PWD)/sipo.v
 VERILOG_SOURCES += $(PWD)/reg.v
 VERILOG_SOURCES += $(PWD)/change_detect.v
 VERILOG_SOURCES += $(PWD)/counter.v
-VERILOG_SOURCES += $(PWD)/itr_div.v
-VERILOG_SOURCES += $(PWD)/shift_div.v
-VERILOG_SOURCES += $(PWD)/div.v
+VERILOG_SOURCES += $(PWD)/combo_div.v
 VERILOG_SOURCES += $(PWD)/fsm_control.v
 VERILOG_SOURCES += $(PWD)/debouncer.v
 
