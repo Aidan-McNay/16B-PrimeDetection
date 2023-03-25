@@ -19,7 +19,7 @@ module aidan_mcnay_combo_div #(
 
     // A combination of iterative and shifting dividers, to
     // save on register space
-    
+
     // Credit for the idea of dynamic dispatch based on
     // data: Quinn Caroline Guthrie <3
 
@@ -35,7 +35,6 @@ module aidan_mcnay_combo_div #(
 
     reg  [nbits-1:0] opa_reg;
     reg  [nbits-1:0] opb_reg;
-    reg  [nbits-1:0] opb_value;
 
     wire [nbits-1:0] opb_reg_sl;
     assign opb_reg_sl = opb_reg << 1;
@@ -90,7 +89,7 @@ module aidan_mcnay_combo_div #(
         end
 
         else if( state_curr == SHIFT_CALC ) begin
-            if( opb_reg == opb_value )
+            if( opb_reg == opb )
                 state_next = DONE;
 
             else if( opb_reg == opa_reg ) // Early exit
@@ -162,12 +161,8 @@ module aidan_mcnay_combo_div #(
         end
     end
 
-    // Keep track of our initial divisor with opb_value
-    always @( posedge clk ) begin
-        if( reset ) opb_value <= 0;
-
-        else if( state_curr == IDLE ) opb_value <= opb;
-    end
+    // Keep track of our initial divisor with opb - we assume this doesn't change
+    // mid-division
 
     // Our output will always be stored in the opa register
     assign result = opa_reg;
