@@ -25,13 +25,13 @@ yaml_version: 3.0
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
   author:       "Aidan McNay"      # Your name
-  title:        "32b-PrimeDetector"      # Project title
+  title:        "31b-PrimeDetector"      # Project title
   language:     "Verilog"      # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "Detects whether a 32-bit number is prime or not"      # Short description of what your project does
+  description:  "Detects whether a 31-bit number is prime or not"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      The 32-bit Prime Detector takes in a 32-bit number (shifted in serially). Once the number is obtained, the FSM control logic takes over. It attempts to divide the value by all numbers less than it; if it finds one that divides evenly, the logic stops and declares the number not prime. If it doesn't divide evenly by any of these, the number is declared prime. 
+      The 31-bit Prime Detector takes in a 31-bit number (shifted in serially). Once the number is obtained, the FSM control logic takes over. It attempts to divide the value by all numbers less than it; if it finds one that divides evenly, the logic stops and declares the number not prime. If it doesn't divide evenly by any of these, the number is declared prime. 
       
       Due to space constraints, the design uses an iterative divider and FSM logic to minimize space usage. Further information can be taken from the README.md on the GitHub page
 
