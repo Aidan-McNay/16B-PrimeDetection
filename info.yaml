@@ -57,12 +57,12 @@ documentation:
   outputs:
     - done
     - is_prime
-    - NC
-    - NC
-    - NC
-    - NC
-    - NC
-    - NC
+    - waiting
+    - GND
+    - GND
+    - GND
+    - GND
+    - GND
 
 # The following fields are optional
   tag:          "experiment"      # comma separated list of tags: test encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
